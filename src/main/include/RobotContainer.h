@@ -6,8 +6,10 @@
 
 #include <frc2/command/Command.h>
 
-#include "commands/ExampleCommand.h"
-#include "subsystems/ExampleSubsystem.h"
+#include "commands/DriveDistance.h"
+#include "subsystems/DriveSubsystem.h"
+
+#include <units/length.h>
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -24,8 +26,8 @@ class RobotContainer {
 
  private:
   // The robot's subsystems and commands are defined here...
-  ExampleSubsystem m_subsystem;
-  ExampleCommand m_autonomousCommand;
+  DriveSubsystem m_driveSubsystem;
+  DriveDistance m_autonomousCommand{&m_driveSubsystem, 5_ft};
 
   void ConfigureButtonBindings();
 };

@@ -95,6 +95,12 @@ void DriveSubsystem::RunMotionMagic(units::meter_t distance){
     m_frontRight.Set(ControlMode::MotionMagic, ticksDistance);
 }
 
+void DriveSubsystem::RunPID(units::meter_t distance){
+    double ticksDistance = DistanceToTicks(distance);
+    m_frontLeft.Set(ControlMode::Position, ticksDistance);
+    m_frontRight.Set(ControlMode::Position, ticksDistance);
+}
+
 units::meter_t DriveSubsystem::TicksToDistance(double ticks){
     return ticks / TICKS_PER_ROTATION * wpi::math::pi * WHEEL_DIAMETER;
 }
